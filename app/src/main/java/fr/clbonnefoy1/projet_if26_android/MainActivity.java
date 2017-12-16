@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
     private LinearLayout mRootView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -90,9 +90,13 @@ public class MainActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Logement l = logements.get(position);
-
+/*
                 Intent intent = new Intent(mContext, Contact.class);
                 intent.putExtra("id_proprio", l.getId_proprio());
+                startActivity(intent);
+*/
+                Intent intent = new Intent(mContext, DetailsLogement.class);
+                intent.putExtra("label", l.getLabel());
                 startActivity(intent);
 
             }

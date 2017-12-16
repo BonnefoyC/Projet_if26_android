@@ -29,6 +29,11 @@ public class LogementsAdapter extends ArrayAdapter<Logement>{
 
     private int ressourceID;
 
+    private boolean color_switch = true;
+
+    private int gris = Color.rgb(245,245,245);
+    private int bleu = Color.rgb(225,225,255);
+
     public LogementsAdapter(Context context, int resource, List<Logement> logements) {
         super(context, resource, logements);
 
@@ -56,6 +61,8 @@ public class LogementsAdapter extends ArrayAdapter<Logement>{
 
             holder.tv_prix_logement = (TextView)row.findViewById(R.id.tv_prix_logement);
 
+            holder.lv_item_linearlayout = (LinearLayout)row.findViewById(R.id.lv_item_linearlayout);
+
             row.setTag(holder);
         }
         else
@@ -71,7 +78,13 @@ public class LogementsAdapter extends ArrayAdapter<Logement>{
 
         holder.tv_prix_logement.setText(String.format("Prix : %d",logement.getPrix()));
 
-        //TODO Arrange ça !
+        if(color_switch) {
+            holder.lv_item_linearlayout.setBackgroundColor(gris);
+            color_switch = false;
+        } else {
+            holder.lv_item_linearlayout.setBackgroundColor(bleu);
+            color_switch = true;
+        }
 
         return row;
     }
@@ -81,6 +94,7 @@ public class LogementsAdapter extends ArrayAdapter<Logement>{
         ImageView im_logement;
         TextView tv_label_logement;
         TextView tv_prix_logement;
+        LinearLayout lv_item_linearlayout;
     }
 
 

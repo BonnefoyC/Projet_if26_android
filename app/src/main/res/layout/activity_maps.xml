@@ -27,7 +27,7 @@
             android:layout_gravity="bottom|right"
             android:clickable="true"
             android:src="@android:drawable/ic_menu_revert"
-            app:backgroundTint="@android:color/holo_green_light"
+            app:backgroundTint="?attr/colorPrimary"
             tools:layout_editor_absoluteX="10dp"
             tools:layout_editor_absoluteY="10dp" />
     </android.support.design.widget.CoordinatorLayout>

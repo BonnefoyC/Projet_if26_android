@@ -90,6 +90,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Log.i("Info Window Clic", marker.getTitle());
+                Intent intent = new Intent(mContext, DetailsLogement.class);
+                intent.putExtra("label", marker.getTitle());
+                startActivity(intent);
+            }
+        });
+
+        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                View myContentView = getLayoutInflater().inflate(
+                        R.layout.map_window_info, null);
+                TextView tvTitle = ((TextView) myContentView
+                        .findViewById(R.id.tv_label));
+                tvTitle.setText(marker.getTitle());
+                TextView tvSnippet = ((TextView) myContentView
+                        .findViewById(R.id.tv_prix));
+                tvSnippet.setText(marker.getSnippet());
+                return myContentView;
+            }
+        });
+
         CameraPosition cp = CameraPosition.builder()
                 .target(new LatLng(48.295485, 4.073030)).zoom(12).build();
 

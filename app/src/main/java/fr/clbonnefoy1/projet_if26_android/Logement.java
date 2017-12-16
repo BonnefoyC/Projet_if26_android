@@ -37,7 +37,7 @@ public class Logement {
         this.lng = lng;
         this.image_uri = image_uri; //TODO Test les uris
         this.id_proprio = id_proprio;
-        markerOptions = new MarkerOptions().position(new LatLng(lat, lng)).title(label);
+        markerOptions = new MarkerOptions().position(new LatLng(lat, lng)).title(label).snippet(String.format("Prix : %d", prix));
     }
 
     @Override
