@@ -38,9 +38,8 @@ public class Contact extends AppCompatActivity {
         String id_proprio = intent.getStringExtra("id_proprio");
 
         ModulePersistance mp = new ModulePersistance(this);
-
+/*
         Proprietaire p = mp.getProprietaire(id_proprio);
-
         tv_nom_proprio = (TextView)findViewById(R.id.tv_nom_proprio);
         tv_nom_proprio.setText(String.format("Nom : %s", p.getNom()));
 
@@ -74,6 +73,6 @@ public class Contact extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+*/
     }
 }

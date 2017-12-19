@@ -58,6 +58,26 @@ public class Proprietaire {
         liste.add(new Proprietaire("2", "Jean-Marc NIGRO", "jean_marc.nigro@utt.fr", "0425358595"));
         liste.add(new Proprietaire("3", "Guillaume DOYEN", "guillaue.doyen@utt.fr", "0423512867"));
         liste.add(new Proprietaire("4", "Clément BONNEFOY", "clement.bonnefoy@utt.fr", "0464532621"));
+        liste.add(new Proprietaire("5", "Céline georges", "céline.georges@gmail.com", "0464535555"));
+        liste.add(new Proprietaire("6", "Christine Dupond", "christine.dupond@gmail.com", "0461245621"));
+        liste.add(new Proprietaire("7", "Michel Pakiry", "michel.pakiry@hotmail.fr", "0763532621"));
+        liste.add(new Proprietaire("8", "Sarra Chatelet", "sarra.chatelet@gmail.com", "0461290621"));
+        liste.add(new Proprietaire("9", "Chloé Robert", "chloé.robert@hotmail.fr", "0461782391"));
+        liste.add(new Proprietaire("10", "Sarra Petit", "sarra.petit@gmail.com", "0464536634"));
+        liste.add(new Proprietaire("11", "Marie Girard", "marie.Girard", "0461767621"));
+        liste.add(new Proprietaire("12", "Philippe Roux", "philippe.roux@gmail.com", "0462220621"));
+        liste.add(new Proprietaire("13", "Sandra Joly", "sandra.joly@gmail.com", "1678032621"));
+        liste.add(new Proprietaire("14", "Philippe Roux", "philippe.roux@gmail.com", "0462220621"));
+        liste.add(new Proprietaire("15", "Michel Laurant ", "michel.laurant@gmail.com", "0465534621"));
+        liste.add(new Proprietaire("16", "Clement Lambert ", "Clement.lambert@gmail.com", "0765534621"));
+
+
+
+
+
+
+
+
         return liste;
     }
 }
