@@ -16,7 +16,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailsLogement" />
         <activity android:name=".AjouterLogement" />
         <activity
             android:name=".MainActivity"
@@ -45,7 +44,8 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".Contact" />
-        <activity android:name=".DeposerLogement"></activity>
+        <activity android:name=".DeposerLogement" />
+        <activity android:name=".Details"></activity>
     </application>
 
 </manifest>

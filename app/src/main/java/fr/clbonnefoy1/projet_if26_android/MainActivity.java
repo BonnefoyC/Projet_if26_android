@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
 
                 Logement l = logements.get(position);
 
-                Intent intent = new Intent(mContext, DetailsLogement.class);
+                Intent intent = new Intent(mContext, Details.class);
                 intent.putExtra("label", l.getLabel());
                 startActivity(intent);
 
