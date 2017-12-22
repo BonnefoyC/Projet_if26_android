@@ -4,96 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.demotxt.droidsrce.profileui.MainActivity"
+    tools:context="fr.clbonnefoy1.projet_if26_android.Contact"
     android:background="@color/graylight"
     android:orientation="vertical">
-    RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="9000dp">
+
     <LinearLayout
-        android:background="@drawable/gradientbackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_arrow_back_black_24dp"/>
 
         <TextView
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:paddingTop="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:text="Envoyer un email à ''Marc LEMERCIER'' :"/>
-        <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradientbackground"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="Envoyer un email à ''Marc LEMERCIER''"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:background="@color/graylight"
-                android:layout_marginTop="30dp"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Votre nom :"
+            android:padding="5dp"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-                android:id="@+id/textView"
-                android:layout_width="400dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="20dp"
-                android:hint="Votre nom :"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:paddingTop="35dp"/>
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/et_nom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="Name" />
 
-                <TextView
-                    android:background="@color/graylight"
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/textView"
-                    android:layout_width="400dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingLeft="20dp"
-                    android:hint="Adresse E-mail :"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:paddingTop="35dp"/>
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:weightSum="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Adresse E-mail :"
+            android:padding="5dp"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-                    <TextView
-                        android:background="@color/graylight"
-                        android:layout_marginTop="30dp"
-                        android:id="@+id/textView"
-                        android:layout_width="400dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingLeft="20dp"
-                        android:hint="Envoyer un message :"
-                        android:textSize="30sp"
-                        android:textStyle="bold"
-                        android:paddingTop="70dp"
-                        android:layout_weight="0.37" />
-                    <Button
-                        android:textColor="#fff"
-                        android:background="@drawable/buttonstyleithgradient"
-                        android:layout_marginTop="35dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Envoyer le message"/>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="Name" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Votre message :"
+            android:padding="5dp"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp" />
+
+        <Button
+            android:id="@+id/bt_valider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/buttonstyleithgradient"
+            android:text="Envoyer le message"
+            android:textColor="#fff" />
 
 
     </LinearLayout>
