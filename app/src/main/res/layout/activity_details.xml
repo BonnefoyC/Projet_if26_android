@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="45dp"
-                    android:src="@drawable/photocercle" />
+                    android:src="@drawable/logement22" />
 
                 <TextView
                     android:id="@+id/tv_label"
