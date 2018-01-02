@@ -16,34 +16,33 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Desciption de l'application :" />
-
-        <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_weight="0.29" />
+            android:layout_weight="0.29"
+            android:text="LeBonLogement est une application permettant à tout les propriétaires d'un bien de le proposer à la location. " />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Crédits" />
+            android:padding="5dp"
+            android:text="Crédits"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:text="Clément BONNEFOY, ISI 5 MPL" />
 
         <TextView
             android:id="@+id/textView18"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:text="Wiem JELLAD, Master SSI" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
