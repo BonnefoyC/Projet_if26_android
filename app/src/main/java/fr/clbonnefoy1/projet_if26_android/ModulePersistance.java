@@ -255,5 +255,6 @@ public class ModulePersistance extends SQLiteOpenHelper {
                 p.getId_proprio());
 
         db.execSQL(req);
+        db.close();
     }
 }
