@@ -76,7 +76,7 @@ public class ModulePersistance extends SQLiteOpenHelper {
                         ATTRIBUT_ADRESSE + " TEXT," +
                         ATTRIBUT_LATITUDE + " TEXT," +
                         ATTRIBUT_LONGITUDE + " TEXT," +
-                        ATTRIBUT_IMAGE_URI + " TEXT," +
+                        ATTRIBUT_IMAGE_URI + " INTEGER," +
                         ATTRIBUT_ID_PROPRIO + " TEXT" +
                         ")";
         db.execSQL(table_module_create);
@@ -121,7 +121,7 @@ public class ModulePersistance extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS" + TABLE_LOGEMENTS + ";");
-
+        db.execSQL("DROP TABLE IF EXISTS" + TABLE_PROPRIETAIRES + ";");
         onCreate(db);
     }
 
@@ -149,7 +149,7 @@ public class ModulePersistance extends SQLiteOpenHelper {
                 c.getString(NUM_COL_ADRESSE),
                 c.getDouble(NUM_COL_LATITUDE),
                 c.getDouble(NUM_COL_LONGITUDE),
-                c.getString(NUM_COL_IMAGE_URI),
+                c.getInt(NUM_COL_IMAGE_URI),
                 c.getString(NUM_COL_ID_PROPRIO));
         c.close();
 
@@ -175,7 +175,7 @@ public class ModulePersistance extends SQLiteOpenHelper {
                         c.getString(NUM_COL_ADRESSE),
                         c.getDouble(NUM_COL_LATITUDE),
                         c.getDouble(NUM_COL_LONGITUDE),
-                        c.getString(NUM_COL_IMAGE_URI),
+                        c.getInt(NUM_COL_IMAGE_URI),
                         c.getString(NUM_COL_ID_PROPRIO));
                 // Adding contact to list
                 liste_logement.add(l);

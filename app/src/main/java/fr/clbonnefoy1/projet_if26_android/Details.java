@@ -2,15 +2,22 @@ package fr.clbonnefoy1.projet_if26_android;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Field;
+
+import static fr.clbonnefoy1.projet_if26_android.R.drawable.logement1;
 import static fr.clbonnefoy1.projet_if26_android.R.id.tv_label;
 
 public class Details extends AppCompatActivity {
@@ -25,6 +32,7 @@ public class Details extends AppCompatActivity {
     private TextView tv_nb_pieces;
     private TextView tv_adresse;
     private TextView tv_description;
+    private ImageView im_logement;
 
     private Button bt_contact;
 
@@ -59,6 +67,11 @@ public class Details extends AppCompatActivity {
 
         tv_description = (TextView)findViewById(R.id.tv_description);
         tv_description.setText(logement_courant.getDescription());
+
+        im_logement = (ImageView)findViewById(R.id.im_logement);
+
+        im_logement.setImageBitmap(BitmapFactory.decodeResource(mContext.getResources(),
+                Logement.getRessourceImageId()));
 
         bt_contact = (Button)findViewById(R.id.bt_contact);
         bt_contact.setOnClickListener(new View.OnClickListener() {

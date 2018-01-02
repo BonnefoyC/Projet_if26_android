@@ -61,7 +61,7 @@ public class DeposerLogement extends AppCompatActivity {
                 String ville = et_ville.getText().toString();
                 double lat = 2.253656;
                 double lng = 2.265356;
-                String image_uri = "";
+                int image_uri = R.drawable.logement2;
                 String id_proprio = "1";
 
 
