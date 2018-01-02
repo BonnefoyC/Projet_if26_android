@@ -19,6 +19,9 @@ public class ModifierCompte extends AppCompatActivity {
 
     private Button bt_valider;
 
+    private Proprietaire proprietaire;
+
+    private ModulePersistance mp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,23 +29,32 @@ public class ModifierCompte extends AppCompatActivity {
 
         mContext = this;
 
+        mp = new ModulePersistance(this);
+
+        proprietaire = mp.getProprietaire(Compte.getId());
+
         et_nom = (EditText) findViewById(R.id.et_nom);
-        et_nom.setText(String.format("%s", Compte.getNom()));
+        et_nom.setText(String.format("%s", proprietaire.getNom()));
 
         et_email = (EditText) findViewById(R.id.et_email);
-        et_email.setText(String.format("%s", Compte.getEmail()));
+        et_email.setText(String.format("%s", proprietaire.getEmail()));
 
         et_tel = (EditText) findViewById(R.id.et_tel);
-        et_tel.setText(String.format("%s", Compte.getTel()));
+        et_tel.setText(String.format("%s", proprietaire.getTel()));
 
         bt_valider = (Button)findViewById(R.id.bt_valider);
         bt_valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(verificationChamps()) {
-                    Compte.setNom(et_nom.getText().toString());
-                    Compte.setEmail(et_email.getText().toString());
-                    Compte.setTel(et_tel.getText().toString());
+
+                    String id = proprietaire.getId_proprio();
+                    String nom = et_nom.getText().toString();
+                    String email = et_email.getText().toString();
+                    String tel = et_tel.getText().toString();
+
+                    mp.updateProprietaire(new Proprietaire(id, nom, email, tel));
+
                     Intent intent = new Intent(mContext, Parametres.class);
                     startActivity(intent);
                 }

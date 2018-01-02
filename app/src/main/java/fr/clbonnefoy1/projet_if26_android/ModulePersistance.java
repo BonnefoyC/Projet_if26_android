@@ -239,4 +239,21 @@ public class ModulePersistance extends SQLiteOpenHelper {
 
         return p;
     }
+
+    public void updateProprietaire(Proprietaire p) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String req = String.format("UPDATE %s SET %s=\"%s\", %s=\"%s\", %s=\"%s\" WHERE %s=\"%s\";",
+                TABLE_PROPRIETAIRES,
+                ATTRIBUT_NOM,
+                p.getNom(),
+                ATTRIBUT_EMAIL,
+                p.getEmail(),
+                ATTRIBUT_TEL,
+                p.getTel(),
+                ATTRIBUT_ID,
+                p.getId_proprio());
+
+        db.execSQL(req);
+    }
 }

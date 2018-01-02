@@ -6,33 +6,13 @@ package fr.clbonnefoy1.projet_if26_android;
 
 public class Compte {
 
-    private static String nom = "Clément BONNEFOY";
+    private static String id = "4";
 
-    private static String email = "clement.bonnefoy@utt.fr";
-
-    private static String tel = "0653262448";
-
-    public static String getNom() {
-        return nom;
+    public static String getId() {
+        return id;
     }
 
-    public static void setNom(String nom) {
-        Compte.nom = nom;
-    }
-
-    public static String getEmail() {
-        return email;
-    }
-
-    public static void setEmail(String email) {
-        Compte.email = email;
-    }
-
-    public static String getTel() {
-        return tel;
-    }
-
-    public static void setTel(String tel) {
-        Compte.tel = tel;
+    public static void setId(String id) {
+        Compte.id = id;
     }
 }
