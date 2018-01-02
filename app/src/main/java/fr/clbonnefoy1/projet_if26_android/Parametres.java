@@ -24,6 +24,8 @@ public class Parametres extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametres);
 
+        mContext = this;
+
         tv_email = (TextView)findViewById(R.id.tv_email);
         tv_email.setText(String.format("Email : %s", Compte.getEmail()));
         tv_nom = (TextView)findViewById(R.id.tv_nom);
