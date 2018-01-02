@@ -19,6 +19,10 @@ public class Parametres extends AppCompatActivity {
 
     private Button bt_modifier;
 
+    private Proprietaire proprietaire;
+
+    private ModulePersistance mp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +30,16 @@ public class Parametres extends AppCompatActivity {
 
         mContext = this;
 
+        mp = new ModulePersistance(this);
+
+        proprietaire = mp.getProprietaire(Compte.getId());
+
         tv_email = (TextView)findViewById(R.id.tv_email);
-        tv_email.setText(String.format("Email : %s", Compte.getEmail()));
+        tv_email.setText(String.format("Email : %s", proprietaire.getEmail()));
         tv_nom = (TextView)findViewById(R.id.tv_nom);
-        tv_nom.setText(String.format("Nom : %s", Compte.getNom()));
+        tv_nom.setText(String.format("Nom : %s", proprietaire.getNom()));
         tv_tel = (TextView)findViewById(R.id.tv_tel);
-        tv_tel.setText(String.format("Tel : %s", Compte.getTel()));
+        tv_tel.setText(String.format("Tel : %s", proprietaire.getTel()));
 
         bt_modifier = (Button)findViewById(R.id.bt_modifier);
         bt_modifier.setOnClickListener(new View.OnClickListener() {
