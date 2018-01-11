@@ -18,6 +18,7 @@ public class Parametres extends AppCompatActivity {
     private TextView tv_tel;
 
     private Button bt_modifier;
+    private Button bt_mdp;
 
     private Proprietaire proprietaire;
 
@@ -46,6 +47,15 @@ public class Parametres extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ModifierCompte.class);
+                startActivity(intent);
+            }
+        });
+
+        bt_mdp = (Button)findViewById(R.id.bt_mdp);
+        bt_mdp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ModifierMdp.class);
                 startActivity(intent);
             }
         });

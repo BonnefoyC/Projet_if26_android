@@ -19,8 +19,7 @@
         <activity
             android:name=".MainActivity"
             android:label="LeBonLogement"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -37,7 +36,7 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".Contact"></activity>
+        <activity android:name=".Contact" />
         <activity android:name=".DeposerLogement" />
         <activity android:name=".Details" />
         <activity android:name=".Aide" />
@@ -46,9 +45,11 @@
         <activity android:name=".Authentification">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ModifierMdp"></activity>
     </application>
 
 </manifest>

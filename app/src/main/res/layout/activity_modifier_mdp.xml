@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.clbonnefoy1.projet_if26_android.ModifierMdp">
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="511dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modifier votre mot de passe !"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_mdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ancien mot de passe" />
+
+            <EditText
+                android:id="@+id/et_ancien_mdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nouveau mot de passe" />
+
+            <EditText
+                android:id="@+id/et_nouveau_mdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:text="Name" />
+
+            <Button
+                android:id="@+id/bt_mdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Valider" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_num_temp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/tv_indications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Entrez le numéro à quatre chiffres qui vous a été envoyé à l'adresse suivante : blbl@utt.fr." />
+
+            <EditText
+                android:id="@+id/et_num_temp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="0000"
+                android:inputType="number"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/bt_num_temp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Valider" />
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

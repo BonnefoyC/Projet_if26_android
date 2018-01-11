@@ -62,7 +62,7 @@ public class DeposerLogement extends AppCompatActivity {
                 double lat = 2.253656;
                 double lng = 2.265356;
                 int image_uri = R.drawable.logement1;
-                String id_proprio = "4";
+                String id_proprio = Compte.getId();
 
 
                 Logement l = new Logement(
