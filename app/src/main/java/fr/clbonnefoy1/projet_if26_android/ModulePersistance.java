@@ -12,9 +12,25 @@ import android.webkit.ConsoleMessage;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Console;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.InvalidParameterSpecException;
 import java.util.ArrayList;
+import java.util.Random;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+
+import static android.R.attr.id;
 import static android.R.attr.label;
+import static android.R.attr.password;
 
 /**
  * Created by Clément on 07/11/2017.
@@ -58,6 +74,11 @@ public class ModulePersistance extends SQLiteOpenHelper {
     private static final int NUM_COL_EMAIL = 2;
     private static final String ATTRIBUT_TEL = "tel";
     private static final int NUM_COL_TEL = 3;
+    private static final String ATTRIBUT_PASS = "password";
+    private static final int NUM_COL_PASS = 4;
+
+
+    private static SecretKey secret = new SecretKeySpec("0".getBytes(), "AES");
 
     public ModulePersistance(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -86,7 +107,8 @@ public class ModulePersistance extends SQLiteOpenHelper {
                         ATTRIBUT_ID + " TEXT primary key," +
                         ATTRIBUT_NOM + " TEXT, " +
                         ATTRIBUT_EMAIL + " TEXT, " +
-                        ATTRIBUT_TEL + " TEXT" +
+                        ATTRIBUT_TEL + " TEXT, " +
+                        ATTRIBUT_PASS + " TEXT" +
                         ")";
         db.execSQL(table_module_create);
     }
@@ -205,12 +227,17 @@ public class ModulePersistance extends SQLiteOpenHelper {
     public void addProprietaire(Proprietaire p){
         SQLiteDatabase db = this.getWritableDatabase();
 
-
         ContentValues cv = new ContentValues();
-        cv.put(ATTRIBUT_ID, p.getId_proprio());
-        cv.put(ATTRIBUT_NOM, p.getNom());
-        cv.put(ATTRIBUT_EMAIL, p.getEmail());
-        cv.put(ATTRIBUT_TEL, p.getTel());
+
+        try {
+            cv.put(ATTRIBUT_ID, p.getId_proprio());
+            cv.put(ATTRIBUT_NOM, encryptMsg(p.getNom()));
+            cv.put(ATTRIBUT_EMAIL, encryptMsg(p.getEmail()));
+            cv.put(ATTRIBUT_TEL, encryptMsg(p.getTel()));
+            cv.put(ATTRIBUT_PASS, encryptMsg(p.getPass()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         db.insert(TABLE_PROPRIETAIRES, null, cv);
 
@@ -220,21 +247,36 @@ public class ModulePersistance extends SQLiteOpenHelper {
     public Proprietaire getProprietaire(String id_proprio) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor c = db.query(TABLE_PROPRIETAIRES, new String[] {ATTRIBUT_ID, ATTRIBUT_NOM, ATTRIBUT_EMAIL, ATTRIBUT_TEL}, ATTRIBUT_ID + " LIKE \"%" + id_proprio + "%\"",null, null, null, null);
+        Cursor c = db.query(TABLE_PROPRIETAIRES, new String[] {ATTRIBUT_ID, ATTRIBUT_NOM, ATTRIBUT_EMAIL, ATTRIBUT_TEL, ATTRIBUT_PASS}, ATTRIBUT_ID + " LIKE \"%" + id_proprio + "%\"",null, null, null, null);
+        return cursorToProprietaire(c);
+    }
+
+    public Proprietaire getProprietaire(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor c = db.query(TABLE_PROPRIETAIRES, new String[] {ATTRIBUT_ID, ATTRIBUT_NOM, ATTRIBUT_EMAIL, ATTRIBUT_TEL, ATTRIBUT_PASS}, ATTRIBUT_EMAIL + " LIKE \"%" + email + "%\"",null, null, null, null);
         return cursorToProprietaire(c);
     }
 
     private Proprietaire cursorToProprietaire(Cursor c) {
+
         if (c.getCount() == 0) {
             return null;
         }
 
+        Proprietaire p = null;
+
         c.moveToFirst();
 
-        Proprietaire p = new Proprietaire(c.getString(NUM_COL_ID),
-                c.getString(NUM_COL_NOM),
-                c.getString(NUM_COL_EMAIL),
-                c.getString(NUM_COL_TEL));
+        try {
+            p = new Proprietaire(c.getString(NUM_COL_ID),
+                    decryptMsg(c.getString(NUM_COL_NOM)),
+                    decryptMsg(c.getString(NUM_COL_EMAIL)),
+                    decryptMsg(c.getString(NUM_COL_TEL)),
+                    decryptMsg(c.getString(NUM_COL_PASS)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         c.close();
 
         return p;
@@ -243,7 +285,7 @@ public class ModulePersistance extends SQLiteOpenHelper {
     public void updateProprietaire(Proprietaire p) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String req = String.format("UPDATE %s SET %s=\"%s\", %s=\"%s\", %s=\"%s\" WHERE %s=\"%s\";",
+        String req = String.format("UPDATE %s SET %s=\"%s\", %s=\"%s\", %s=\"%s\", %s=\"%s\" WHERE %s=\"%s\";",
                 TABLE_PROPRIETAIRES,
                 ATTRIBUT_NOM,
                 p.getNom(),
@@ -251,10 +293,38 @@ public class ModulePersistance extends SQLiteOpenHelper {
                 p.getEmail(),
                 ATTRIBUT_TEL,
                 p.getTel(),
+                ATTRIBUT_PASS,
+                p.getPass(),
                 ATTRIBUT_ID,
                 p.getId_proprio());
 
         db.execSQL(req);
         db.close();
+    }
+
+    public static String encryptMsg(String message)
+            throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidParameterSpecException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException
+    {
+        /*
+        Cipher cipher = null;
+        cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, secret);
+        byte[] cipherText = cipher.doFinal(message.getBytes("UTF-8"));
+        return cipherText.toString();
+        */
+        return message;
+    }
+
+    public static String decryptMsg(String message)
+            throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidParameterSpecException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException
+    {
+        /*
+        Cipher cipher = null;
+        cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.DECRYPT_MODE, secret);
+        String decryptString = new String(cipher.doFinal(cipherText.getBytes()), "UTF-8");
+        return decryptString;
+        */
+        return message;
     }
 }

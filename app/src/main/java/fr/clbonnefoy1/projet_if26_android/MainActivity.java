@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ModulePersistance mp = new ModulePersistance(this);
-
+       ModulePersistance mp = new ModulePersistance(this);
+/*
         ArrayList<Proprietaire> liste_p = Proprietaire.getInitialProprietaires();
         for (Proprietaire p : liste_p) {
             mp.addProprietaire(p);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity
         for (Logement l: liste) {
             mp.addLogement(l);
         }
-
+*/
         lv_logements = (ListView) findViewById(R.id.lv_logements);
 
         logements = mp.getAllLogements();

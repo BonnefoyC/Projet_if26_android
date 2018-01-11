@@ -52,8 +52,9 @@ public class ModifierCompte extends AppCompatActivity {
                     String nom = et_nom.getText().toString();
                     String email = et_email.getText().toString();
                     String tel = et_tel.getText().toString();
+                    String pass = "";
 
-                    mp.updateProprietaire(new Proprietaire(id, nom, email, tel));
+                    mp.updateProprietaire(new Proprietaire(id, nom, email, tel, pass));
 
                     Intent intent = new Intent(mContext, Parametres.class);
                     startActivity(intent);
