@@ -62,14 +62,19 @@
                 android:id="@+id/bt_mdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Valider" />
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Valider"
+                android:textColor="@android:color/background_light" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_num_temp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/cardview_shadow_end_color"
             android:orientation="vertical"
+            android:padding="5dp"
             android:visibility="invisible">
 
             <TextView
@@ -91,7 +96,26 @@
                 android:id="@+id/bt_num_temp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Valider" />
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Valider"
+                android:textColor="@android:color/background_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Si vous n'avez pas reçu de mail, vous pouvez le renvoyer en utilisant le bouton suivant." />
+
+            <Button
+                android:id="@+id/bt_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:text="Renvoyer le mail !"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@android:color/background_light" />
         </LinearLayout>
 
     </LinearLayout>
