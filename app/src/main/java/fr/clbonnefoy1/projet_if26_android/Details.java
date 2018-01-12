@@ -70,8 +70,10 @@ public class Details extends AppCompatActivity {
 
         im_logement = (ImageView)findViewById(R.id.im_logement);
 
+        //im_logement.setImageBitmap(BitmapFactory.decodeResource(mContext.getResources(),Logement.getRessourceImageId()));
+
         im_logement.setImageBitmap(BitmapFactory.decodeResource(mContext.getResources(),
-                Logement.getRessourceImageId()));
+                logement_courant.getImage_uri()));
 
         bt_contact = (Button)findViewById(R.id.bt_contact);
         bt_contact.setOnClickListener(new View.OnClickListener() {

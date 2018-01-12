@@ -72,7 +72,9 @@ public class LogementsAdapter extends ArrayAdapter<Logement>{
 
         Logement logement = logements.get(position);
 
-        holder.im_logement.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), Logement.getRessourceImageId()));
+        //holder.im_logement.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), Logement.getRessourceImageId()));
+
+        holder.im_logement.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), logement.getImage_uri()));
 
         holder.tv_label_logement.setText(String.format("%s", logement.getLabel()));
 

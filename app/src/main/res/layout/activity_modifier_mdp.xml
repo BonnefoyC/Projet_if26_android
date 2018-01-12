@@ -80,7 +80,7 @@
                 android:id="@+id/tv_indications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Entrez le numéro à quatre chiffres qui vous a été envoyé à l'adresse suivante : blbl@utt.fr." />
+                android:text="Entrez le numéro à quatre chiffres qui vous a été envoyé au numéro suivant : 0647798507." />
 
             <EditText
                 android:id="@+id/et_num_temp"
@@ -104,14 +104,14 @@
                 android:id="@+id/textView27"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Si vous n'avez pas reçu de mail, vous pouvez le renvoyer en utilisant le bouton suivant." />
+                android:text="Si vous n'avez pas reçu de SMS, vous pouvez le renvoyer en utilisant le bouton suivant." />
 
             <Button
                 android:id="@+id/bt_mail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPrimaryDark"
-                android:text="Renvoyer le mail !"
+                android:text="Renvoyer le SMS !"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@android:color/background_light" />

@@ -80,6 +80,9 @@ public class ModifierMdp extends AppCompatActivity {
             public void onClick(View v) {
                 String num_temp = et_num_temp.getText().toString();
                 if ( code == Integer.parseInt(num_temp)){
+
+                    //TODO Modification du mot de passe
+
                     LinearLayout mRootView = (LinearLayout) findViewById(R.id.LinearLayout);
                     Snackbar.make(mRootView,"Le mot de passe est modifié", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
