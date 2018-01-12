@@ -55,7 +55,6 @@ public class Authentification extends AppCompatActivity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                progressBar.setProgress(progressBar.getProgress() + 25, true);
 
                 return false;
             }
@@ -65,7 +64,6 @@ public class Authentification extends AppCompatActivity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                progressBar.setProgress(progressBar.getProgress() + 25, true);
 
                 return false;
             }
@@ -85,7 +83,6 @@ public class Authentification extends AppCompatActivity {
 
                 if(password.equals(p.getPass())) {
 
-                    progressBar.setProgress(100, true);
 
                     Compte.setId(p.getId_proprio());
 
