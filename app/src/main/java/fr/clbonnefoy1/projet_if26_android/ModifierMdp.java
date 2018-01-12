@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class ModifierMdp extends AppCompatActivity {
     private Button bt_mail;
 
     private int code;
+    private SmsManager smsManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class ModifierMdp extends AppCompatActivity {
         setContentView(R.layout.activity_modifier_mdp);
 
         mContext = this;
+
+        smsManager = SmsManager.getDefault();
 
         ll_mdp = (LinearLayout)findViewById(R.id.ll_mdp);
         et_ancien_mdp = (EditText)findViewById(R.id.et_ancien_mdp);
@@ -68,10 +72,6 @@ public class ModifierMdp extends AppCompatActivity {
                     Snackbar.make(mRootView,"Les deux mots de passe sont identiques", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
-
-
-
-
             }
         });
 
@@ -110,7 +110,16 @@ public class ModifierMdp extends AppCompatActivity {
         code = r.nextInt(8999) + 1000;
         Log.i("code", "" + code);
 
+        String message = String.format("Voici le code pour modifier votre mot de passe : %d", code);
+
+        Log.i("message", message);
+
         //SMS
+        try {
+            smsManager.sendTextMessage("+33647798507", null, message, null, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
