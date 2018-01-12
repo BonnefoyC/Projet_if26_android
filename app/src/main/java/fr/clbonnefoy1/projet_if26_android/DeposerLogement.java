@@ -3,11 +3,13 @@ package fr.clbonnefoy1.projet_if26_android;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 public class DeposerLogement extends AppCompatActivity {
 
@@ -20,7 +22,6 @@ public class DeposerLogement extends AppCompatActivity {
     private EditText et_adresse;
     private EditText et_description;
 
-    private Button bt_annuler;
     private Button bt_valider;
 
     @Override
@@ -37,15 +38,6 @@ public class DeposerLogement extends AppCompatActivity {
         et_adresse = (EditText)findViewById(R.id.et_adresse);
         et_description = (EditText)findViewById(R.id.et_description);
 
-        bt_annuler = (Button)findViewById(R.id.bt_annuler);
-        bt_annuler.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                finish();
-
-            }
-        });
         bt_valider = (Button)findViewById(R.id.bt_valider);
         bt_valider.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +71,24 @@ public class DeposerLogement extends AppCompatActivity {
 
                 mp.addLogement(l);
 
-                //TODO feedback
+                et_label.setEnabled(false);
+                et_prix.setEnabled(false);
+                et_nb_pieces.setEnabled(false);
+                et_ville.setEnabled(false);
+                et_adresse.setEnabled(false);
+                et_description.setEnabled(false);
 
+                LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_deposer);
+                Snackbar.make(mRootView, "Votre annonce a bien été ajoutée !", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+                bt_valider.setText("Retour");
+                bt_valider.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
             }
         });
     }

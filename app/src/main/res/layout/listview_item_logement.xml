@@ -30,6 +30,7 @@
                 android:id="@+id/tv_label_logement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:text="TextView"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -38,6 +39,7 @@
                 android:id="@+id/tv_prix_logement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:text="TextView"
                 android:textSize="14sp" />
         </LinearLayout>

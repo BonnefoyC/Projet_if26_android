@@ -81,7 +81,7 @@ public class Proprietaire {
         liste.add(new Proprietaire("8", "Sarra Chatelet", "sarra.chatelet@gmail.com", "0461290621", ""));
         liste.add(new Proprietaire("9", "Chloé Robert", "chloé.robert@hotmail.fr", "0461782391", ""));
         liste.add(new Proprietaire("10", "Sarra Petit", "sarra.petit@gmail.com", "0464536634", ""));
-        liste.add(new Proprietaire("11", "Marie Girard", "marie.Girard", "0461767621", ""));
+        liste.add(new Proprietaire("11", "Marie Girard", "marie.Girard@utt.fr", "0461767621", ""));
         liste.add(new Proprietaire("12", "Philippe Roux", "philippe.roux@gmail.com", "0462220621", ""));
         liste.add(new Proprietaire("13", "Sandra Joly", "sandra.joly@gmail.com", "1678032621", ""));
         liste.add(new Proprietaire("14", "Philippe Roux", "philippe.roux@gmail.com", "0462220621", ""));

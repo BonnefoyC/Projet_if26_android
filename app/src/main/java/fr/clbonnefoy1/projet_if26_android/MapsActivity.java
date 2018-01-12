@@ -77,19 +77,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                Logement logement = mp.getLogement(marker.getTitle());
-
-                Log.i("MarkerClick", logement.toString());
-
-                //TODO Créer une popup / Lien vers le détail d'une annonce ?
-
-                return false;
-            }
-        });
-
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
