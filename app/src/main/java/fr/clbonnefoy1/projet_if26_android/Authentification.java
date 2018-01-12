@@ -74,25 +74,28 @@ public class Authentification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ModulePersistance mp = new ModulePersistance(mContext);
+                try {
+                    ModulePersistance mp = new ModulePersistance(mContext);
 
-                String email = et_email.getText().toString();
-                String password = et_password.getText().toString();
+                    String email = et_email.getText().toString();
+                    String password = et_password.getText().toString();
 
-                Proprietaire p = mp.getProprietaire(email, password);
+                    Proprietaire p = mp.getProprietaire(email, password);
 
-                if(password.equals(p.getPass())) {
+                    if (password.equals(p.getPass())) {
 
 
-                    Compte.setId(p.getId_proprio());
+                        Compte.setId(p.getId_proprio());
 
-                    Intent intent = new Intent(mContext, MainActivity.class);
-                    startActivity(intent);
-                } else {
-                    progressBar.setProgress(0, true);
-                    LinearLayout mRootView = (LinearLayout) findViewById(R.id.linearLayout);
-                    Snackbar.make(mRootView,"Impossible de vous identifier !", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                        Intent intent = new Intent(mContext, MainActivity.class);
+                        startActivity(intent);
+                    } else {
+                        LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_auth);
+                        Snackbar.make(mRootView, "Impossible de vous identifier !", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
 

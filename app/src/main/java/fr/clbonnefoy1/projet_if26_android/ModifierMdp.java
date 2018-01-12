@@ -29,6 +29,7 @@ public class ModifierMdp extends AppCompatActivity {
 
     private int code;
     private SmsManager smsManager;
+    private String mdp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,8 @@ public class ModifierMdp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //TODO Ancien mdp
+
                 String ancien_mdp = et_ancien_mdp.getText().toString();
                 String nouveau_mdp = et_nouveau_mdp.getText().toString();
 
@@ -64,6 +67,8 @@ public class ModifierMdp extends AppCompatActivity {
                     bt_mdp.setClickable(false);
 
                     ll_num_temp.setVisibility(View.VISIBLE);
+
+                    mdp = nouveau_mdp;
 
                     sendSms();
 
@@ -82,6 +87,14 @@ public class ModifierMdp extends AppCompatActivity {
                 if ( code == Integer.parseInt(num_temp)){
 
                     //TODO Modification du mot de passe
+
+                    ModulePersistance mp = new ModulePersistance(mContext);
+
+                    Proprietaire p = mp.getProprietaire(Compte.getId());
+
+                    p.setPass(mdp);
+
+                    mp.updateProprietaire(p);
 
                     LinearLayout mRootView = (LinearLayout) findViewById(R.id.LinearLayout);
                     Snackbar.make(mRootView,"Le mot de passe est modifié", Snackbar.LENGTH_LONG)

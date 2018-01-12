@@ -302,6 +302,26 @@ public class ModulePersistance extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void updateProprietairePassword(Proprietaire p) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String req = String.format("UPDATE %s SET %s=\"%s\", %s=\"%s\", %s=\"%s\", %s=\"%s\" WHERE %s=\"%s\";",
+                TABLE_PROPRIETAIRES,
+                ATTRIBUT_NOM,
+                p.getNom(),
+                ATTRIBUT_EMAIL,
+                p.getEmail(),
+                ATTRIBUT_TEL,
+                p.getTel(),
+                ATTRIBUT_PASS,
+                p.getPass(),
+                ATTRIBUT_ID,
+                p.getId_proprio());
+
+        db.execSQL(req);
+        db.close();
+    }
+
     public static String encryptMsg(String message)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidParameterSpecException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException
     {
