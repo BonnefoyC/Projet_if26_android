@@ -34,7 +34,7 @@ public class Authentification extends AppCompatActivity {
         setContentView(R.layout.activity_authentification);
 
         mContext = this;
-
+/*
         ModulePersistance mp = new ModulePersistance(this);
 
         ArrayList<Proprietaire> liste_p = Proprietaire.getInitialProprietaires();
@@ -47,7 +47,7 @@ public class Authentification extends AppCompatActivity {
         for (Logement l: liste) {
             mp.addLogement(l);
         }
-
+*/
         progressBar = (ProgressBar)findViewById(R.id.pBar);
 
         et_email = (EditText)findViewById(R.id.et_email);

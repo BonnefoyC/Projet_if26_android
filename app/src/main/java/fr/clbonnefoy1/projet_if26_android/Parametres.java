@@ -98,6 +98,9 @@ public class Parametres extends AppCompatActivity {
                         LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_param);
                         Snackbar.make(mRootView,"Votre compte a bien été supprimé !", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
+
+                        Intent intent = new Intent(mContext, Authentification.class);
+                        startActivity(intent);
                     }
                 });
 
