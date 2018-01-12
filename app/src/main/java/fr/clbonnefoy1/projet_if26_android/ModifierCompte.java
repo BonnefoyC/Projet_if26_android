@@ -2,11 +2,13 @@ package fr.clbonnefoy1.projet_if26_android;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ModifierCompte extends AppCompatActivity {
@@ -52,12 +54,21 @@ public class ModifierCompte extends AppCompatActivity {
                     String nom = et_nom.getText().toString();
                     String email = et_email.getText().toString();
                     String tel = et_tel.getText().toString();
-                    String pass = "";
+                    String pass = proprietaire.getPass();
 
                     mp.updateProprietaire(new Proprietaire(id, nom, email, tel, pass));
 
-                    Intent intent = new Intent(mContext, Parametres.class);
-                    startActivity(intent);
+                    LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_modifier_compte);
+                    Snackbar.make(mRootView,"Votre compte a bien été modifié !", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+
+                    bt_valider.setText("Retour");
+                    bt_valider.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            finish();
+                        }
+                    });
                 }
             }
         });

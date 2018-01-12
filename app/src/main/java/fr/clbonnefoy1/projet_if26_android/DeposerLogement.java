@@ -42,8 +42,7 @@ public class DeposerLogement extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(mContext, MainActivity.class);
-                startActivity(intent);
+                finish();
 
             }
         });
@@ -79,6 +78,8 @@ public class DeposerLogement extends AppCompatActivity {
                 );
 
                 mp.addLogement(l);
+
+                //TODO feedback
 
             }
         });

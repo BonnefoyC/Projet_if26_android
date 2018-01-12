@@ -44,7 +44,6 @@ public class Details extends AppCompatActivity {
         mContext = this;
 
         Intent intent = getIntent();
-        //Log.i("DetailsLogement", intent.getStringExtra("label"));
         String label= intent.getStringExtra("label");
 
         ModulePersistance mp=new ModulePersistance(this);
@@ -69,8 +68,6 @@ public class Details extends AppCompatActivity {
         tv_description.setText(logement_courant.getDescription());
 
         im_logement = (ImageView)findViewById(R.id.im_logement);
-
-        //im_logement.setImageBitmap(BitmapFactory.decodeResource(mContext.getResources(),Logement.getRessourceImageId()));
 
         im_logement.setImageBitmap(BitmapFactory.decodeResource(mContext.getResources(),
                 logement_courant.getImage_uri()));

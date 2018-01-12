@@ -7,7 +7,7 @@
     tools:context="fr.clbonnefoy1.projet_if26_android.ModifierMdp">
 
     <LinearLayout
-        android:id="@+id/LinearLayout"
+        android:id="@+id/ll_modifier_mdp"
         android:layout_width="360dp"
         android:layout_height="511dp"
         android:orientation="vertical"
@@ -63,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="Valider"
+                android:textAllCaps="false"
                 android:textColor="@android:color/background_light" />
         </LinearLayout>
 
@@ -115,6 +116,16 @@
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@android:color/background_light" />
+
+            <Button
+                android:id="@+id/bt_retour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:text="Retour"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:visibility="invisible" />
         </LinearLayout>
 
     </LinearLayout>

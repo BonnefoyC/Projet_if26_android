@@ -64,8 +64,7 @@ public class Contact extends AppCompatActivity {
                 bt_envoyer.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(mContext, MainActivity.class);
-                        startActivity(intent);
+                        finish();
                     }
                 });
             }
