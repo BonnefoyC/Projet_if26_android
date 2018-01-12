@@ -211,11 +211,6 @@ public class ModulePersistance extends SQLiteOpenHelper {
         return liste_logement;
     }
 
-    public void deleteLogement(String label){
-        SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_LOGEMENTS, ATTRIBUT_LABEL + " = " + label, null);
-    }
-
     public int getLogementCount(){
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.query(TABLE_LOGEMENTS, new String[] {ATTRIBUT_LABEL, ATTRIBUT_NB_PIECES, ATTRIBUT_PRIX, ATTRIBUT_DESCRIPTION,ATTRIBUT_VILLE,ATTRIBUT_ADRESSE,ATTRIBUT_LATITUDE,ATTRIBUT_LONGITUDE,ATTRIBUT_IMAGE_URI, ATTRIBUT_ID_PROPRIO}, null,null, null, null, null);
@@ -321,6 +316,27 @@ public class ModulePersistance extends SQLiteOpenHelper {
         db.execSQL(req);
         db.close();
     }
+
+    public void removeProprietaire(String id_proprio) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            String req = String.format("DELETE FROM %s WHERE %s=\"%s\";",
+                    TABLE_LOGEMENTS,
+                    ATTRIBUT_ID_PROPRIO,
+                    id_proprio);
+            db.execSQL(req);
+
+            req = String.format("DELETE FROM %s WHERE %s=\"%s\";",
+                    TABLE_PROPRIETAIRES,
+                    ATTRIBUT_ID,
+                    id_proprio);
+            db.execSQL(req);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        db.close();
+    }
+
 
     public static String encryptMsg(String message)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidParameterSpecException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException

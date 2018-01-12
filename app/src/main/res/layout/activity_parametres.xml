@@ -7,6 +7,7 @@
     tools:context="fr.clbonnefoy1.projet_if26_android.Parametres">
 
     <LinearLayout
+        android:id="@+id/ll_param"
         android:layout_width="360dp"
         android:layout_height="514dp"
         android:layout_marginLeft="0dp"
@@ -64,7 +65,8 @@
             android:layout_margin="10dp"
             android:backgroundTint="@color/endblue"
             android:elevation="0dp"
-            android:text="Modifier votre compte" />
+            android:text="Modifier votre compte"
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/bt_mdp"
@@ -73,7 +75,22 @@
             android:layout_margin="10dp"
             android:backgroundTint="@color/startblue"
             android:elevation="0dp"
-            android:text="Modifier votre mot de passe" />
+            android:text="Modifier votre mot de passe"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/bt_supprimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:elevation="0dp"
+            android:text="Supprimer votre compte"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

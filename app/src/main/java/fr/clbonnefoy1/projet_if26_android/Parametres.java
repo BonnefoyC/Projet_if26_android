@@ -1,12 +1,18 @@
 package fr.clbonnefoy1.projet_if26_android;
 
+import android.app.AlertDialog;
+import android.app.Application;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.test.suitebuilder.TestMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Parametres extends AppCompatActivity {
@@ -19,6 +25,7 @@ public class Parametres extends AppCompatActivity {
 
     private Button bt_modifier;
     private Button bt_mdp;
+    private Button bt_supprimer;
 
     private Proprietaire proprietaire;
 
@@ -60,5 +67,49 @@ public class Parametres extends AppCompatActivity {
             }
         });
 
+        bt_supprimer = (Button) findViewById(R.id.bt_supprimer);
+        bt_supprimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog d = onCreateDialog();
+
+                d.show();
+            }
+        });
+
     }
+
+    private Dialog onCreateDialog() {
+        Dialog dialog;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("Êtes-vous sûr ? (Cette action est irreversible)");
+        builder.setCancelable(false);
+        builder.setTitle("Confirmation");
+
+        builder.setPositiveButton("Oui",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        ModulePersistance mp = new ModulePersistance(mContext);
+                        mp.removeProprietaire(Compte.getId());
+
+                        dialog.cancel();
+                        LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_param);
+                        Snackbar.make(mRootView,"Votre compte a bien été supprimé !", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+                });
+
+        builder.setNegativeButton("Non",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        dialog = builder.create();
+        return dialog;
+    }
+
 }
