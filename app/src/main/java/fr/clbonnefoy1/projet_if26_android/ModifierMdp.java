@@ -81,7 +81,7 @@ public class ModifierMdp extends AppCompatActivity {
 
                 } else {
                     LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_modifier_mdp);
-                    Snackbar.make(mRootView,"Les deux mots de passe sont identiques", Snackbar.LENGTH_LONG)
+                    Snackbar.make(mRootView,"Les deux mots de passe sont identiques !", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
             }
@@ -91,7 +91,14 @@ public class ModifierMdp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String num_temp = et_num_temp.getText().toString();
-                //TODO vérification
+
+                if (num_temp.equals("")) {
+                    LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_modifier_mdp);
+                    Snackbar.make(mRootView,"Veuillez entrer le code !", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
+
                 if ( code == Integer.parseInt(num_temp)){
 
                     ModulePersistance mp = new ModulePersistance(mContext);
@@ -143,7 +150,7 @@ public class ModifierMdp extends AppCompatActivity {
         Random r = new Random();
         code = r.nextInt(8999) + 1000;
 
-        //Log.i("code", "" + code);
+        Log.i("code", "" + code);
 
         String message = String.format("Voici le code pour modifier votre mot de passe : %d", code);
 

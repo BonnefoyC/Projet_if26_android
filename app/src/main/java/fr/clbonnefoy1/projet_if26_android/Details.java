@@ -37,8 +37,6 @@ public class Details extends AppCompatActivity {
     private Button bt_contact;
     private Button bt_retour;
 
-    //TODO retour contextuelle. finish
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
