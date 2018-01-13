@@ -91,6 +91,7 @@ public class ModifierMdp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String num_temp = et_num_temp.getText().toString();
+                //TODO vérification
                 if ( code == Integer.parseInt(num_temp)){
 
                     ModulePersistance mp = new ModulePersistance(mContext);

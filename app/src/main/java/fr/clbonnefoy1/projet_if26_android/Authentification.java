@@ -26,7 +26,7 @@ public class Authentification extends AppCompatActivity {
     private EditText et_password;
     private Button bt_valider;
 
-    private ProgressBar progressBar;
+    //TODO Design
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,8 @@ public class Authentification extends AppCompatActivity {
         mContext = this;
 
         ModulePersistance mp = new ModulePersistance(this);
+
+        //TODO commenter
 
         ArrayList<Proprietaire> liste_p = Proprietaire.getInitialProprietaires();
         for (Proprietaire p : liste_p) {
@@ -47,8 +49,6 @@ public class Authentification extends AppCompatActivity {
         for (Logement l: liste) {
             mp.addLogement(l);
         }
-
-        progressBar = (ProgressBar)findViewById(R.id.pBar);
 
         et_email = (EditText)findViewById(R.id.et_email);
         et_email.setOnKeyListener(new View.OnKeyListener() {

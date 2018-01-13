@@ -44,6 +44,8 @@ public class DeposerLogement extends AppCompatActivity {
             public void onClick(View v) {
                 ModulePersistance mp = new ModulePersistance(mContext);
 
+                //TODO vérifications champs
+
                 String label = et_label.getText().toString();
                 String description = et_description.getText().toString();
                 int prix = Integer.parseInt(et_prix.getText().toString());

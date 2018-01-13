@@ -338,6 +338,7 @@ public class ModulePersistance extends SQLiteOpenHelper {
     }
 
 
+    //TODO chiffrage
     public static String encryptMsg(String message)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidParameterSpecException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException
     {

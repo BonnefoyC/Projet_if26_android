@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 public class Aide extends AppCompatActivity {
 
+    //TODO Design / texte
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
