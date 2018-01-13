@@ -59,6 +59,24 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/bt_deconnexion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/endblue"
+            android:elevation="0dp"
+            android:text="Déconnectez-vous"
+            android:textAllCaps="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:orientation="vertical"></LinearLayout>
+
+        <Button
             android:id="@+id/bt_modifier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

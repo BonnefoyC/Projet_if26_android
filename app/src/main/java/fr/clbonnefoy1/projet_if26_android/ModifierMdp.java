@@ -76,6 +76,7 @@ public class ModifierMdp extends AppCompatActivity {
                 }
 
                 if(!ancien_mdp.equals(nouveau_mdp)) {
+                    et_ancien_mdp.setEnabled(false);
                     et_nouveau_mdp.setEnabled(false);
                     bt_mdp.setClickable(false);
 

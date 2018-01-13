@@ -35,8 +35,9 @@ public class Authentification extends AppCompatActivity {
 
         ModulePersistance mp = new ModulePersistance(this);
 
-        //TODO commenter
+        //TODO commenter Création des logements / propriétaires.
 
+        /*
         ArrayList<Proprietaire> liste_p = Proprietaire.getInitialProprietaires();
         for (Proprietaire p : liste_p) {
             mp.addProprietaire(p);
@@ -47,7 +48,7 @@ public class Authentification extends AppCompatActivity {
         for (Logement l: liste) {
             mp.addLogement(l);
         }
-
+*/
         et_email = (EditText)findViewById(R.id.et_email);
         et_email.setOnKeyListener(new View.OnKeyListener() {
             @Override

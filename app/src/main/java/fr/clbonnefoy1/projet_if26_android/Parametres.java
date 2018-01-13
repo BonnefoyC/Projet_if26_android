@@ -26,6 +26,7 @@ public class Parametres extends AppCompatActivity {
     private Button bt_modifier;
     private Button bt_mdp;
     private Button bt_supprimer;
+    private Button bt_deconnexion;
 
     private Proprietaire proprietaire;
 
@@ -77,6 +78,19 @@ public class Parametres extends AppCompatActivity {
             }
         });
 
+        bt_deconnexion = (Button) findViewById(R.id.bt_deconnexion);
+        bt_deconnexion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Compte.setId("-1");
+
+                Intent i = getBaseContext().getPackageManager()
+                        .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+
     }
 
     private Dialog onCreateDialog() {
@@ -99,8 +113,12 @@ public class Parametres extends AppCompatActivity {
                         Snackbar.make(mRootView,"Votre compte a bien été supprimé !", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
 
-                        Intent intent = new Intent(mContext, Authentification.class);
-                        startActivity(intent);
+                        Compte.setId("-1");
+
+                        Intent i = getBaseContext().getPackageManager()
+                                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
                     }
                 });
 
