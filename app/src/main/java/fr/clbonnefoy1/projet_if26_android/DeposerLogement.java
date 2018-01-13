@@ -42,7 +42,7 @@ public class DeposerLogement extends AppCompatActivity {
         bt_valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ModulePersistance mp = new ModulePersistance(mContext);
+                final ModulePersistance mp = new ModulePersistance(mContext);
 
                 String label = et_label.getText().toString();
                 String description = et_description.getText().toString();
@@ -111,7 +111,9 @@ public class DeposerLogement extends AppCompatActivity {
                 bt_valider.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        finish();
+                        Intent intent = new Intent(mContext, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                     }
                 });
             }
