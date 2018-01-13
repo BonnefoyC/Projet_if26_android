@@ -26,8 +26,6 @@ public class Authentification extends AppCompatActivity {
     private EditText et_password;
     private Button bt_valider;
 
-    //TODO Design
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
