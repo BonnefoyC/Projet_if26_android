@@ -44,12 +44,11 @@ public class ModifierMdp extends AppCompatActivity {
 
         final ModulePersistance mp = new ModulePersistance(mContext);
 
-        Proprietaire p = mp.getProprietaire(Compte.getId());
 
         ll_mdp = (LinearLayout)findViewById(R.id.ll_mdp);
         et_ancien_mdp = (EditText)findViewById(R.id.et_ancien_mdp);
-        et_ancien_mdp.setText(p.getPass());
-        et_ancien_mdp.setEnabled(false);
+        //et_ancien_mdp.setText(p.getPass());
+        //et_ancien_mdp.setEnabled(false);
 
         et_nouveau_mdp = (EditText)findViewById(R.id.et_nouveau_mdp);
         bt_mdp = (Button)findViewById(R.id.bt_mdp);
@@ -67,9 +66,16 @@ public class ModifierMdp extends AppCompatActivity {
                 String ancien_mdp = et_ancien_mdp.getText().toString();
                 String nouveau_mdp = et_nouveau_mdp.getText().toString();
 
+                Proprietaire p = mp.getProprietaire(Compte.getId());
+
+                if(!ancien_mdp.equals(p.getPass())) {
+                    LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_modifier_mdp);
+                    Snackbar.make(mRootView,"L'ancien mot de passe est inexacte !", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
 
                 if(!ancien_mdp.equals(nouveau_mdp)) {
-                    //descativate ll_mpd components
                     et_nouveau_mdp.setEnabled(false);
                     bt_mdp.setClickable(false);
 
