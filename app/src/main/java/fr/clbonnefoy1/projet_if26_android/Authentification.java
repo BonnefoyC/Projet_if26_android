@@ -78,6 +78,14 @@ public class Authentification extends AppCompatActivity {
                     String email = et_email.getText().toString();
                     String password = et_password.getText().toString();
 
+                    if (email.equals("") || password.equals("")) {
+
+                        LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_auth);
+                        Snackbar.make(mRootView, "Veuillez remplir tous les champs !", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        return;
+                    }
+
                     Proprietaire p = mp.getProprietaire(email, password);
 
                     if(p == null) {

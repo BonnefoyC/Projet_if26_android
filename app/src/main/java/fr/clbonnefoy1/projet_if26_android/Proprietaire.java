@@ -71,7 +71,7 @@ public class Proprietaire {
 
     public static ArrayList<Proprietaire> getInitialProprietaires(){
         ArrayList<Proprietaire> liste = new ArrayList<>();
-        liste.add(new Proprietaire("1", "Marc LEMERCIER", "marc.lemercier@utt.fr", "0456899636", ""));
+        liste.add(new Proprietaire("1", "Marc LEMERCIER", "marc.lemercier@utt.fr", "0456899636", "utt"));
         liste.add(new Proprietaire("2", "Jean-Marc NIGRO", "jean_marc.nigro@utt.fr", "0425358595", ""));
         liste.add(new Proprietaire("3", "Guillaume DOYEN", "guillaume.doyen@utt.fr", "0423512867", ""));
         liste.add(new Proprietaire("4", "Clément BONNEFOY", "clement.bonnefoy@utt.fr", "0464532621", "if2617"));
