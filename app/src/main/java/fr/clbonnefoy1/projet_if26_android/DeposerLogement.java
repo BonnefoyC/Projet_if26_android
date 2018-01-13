@@ -44,18 +44,41 @@ public class DeposerLogement extends AppCompatActivity {
             public void onClick(View v) {
                 ModulePersistance mp = new ModulePersistance(mContext);
 
-                //TODO vérifications champs
-
                 String label = et_label.getText().toString();
                 String description = et_description.getText().toString();
-                int prix = Integer.parseInt(et_prix.getText().toString());
-                int nb_pieces = Integer.parseInt(et_nb_pieces.getText().toString());
+                String sprix = et_prix.getText().toString();
+                String snb_pieces = et_nb_pieces.getText().toString();
                 String adresse = et_adresse.getText().toString();
                 String ville = et_ville.getText().toString();
+                String id_proprio = Compte.getId();
+
+                if (label.equals("") || description.equals("") || sprix.equals("") || snb_pieces.equals("") || adresse.equals("") || ville.equals("") || id_proprio.equals("")) {
+                    LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_deposer);
+                    Snackbar.make(mRootView, "Tous les champs sont obligatoires !", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
+
+
+                int prix = Integer.parseInt(et_prix.getText().toString());
+
+                if (prix < 1 || prix > 200000) {
+                    LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_deposer);
+                    Snackbar.make(mRootView, "Prix invalides !", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
+
+                int nb_pieces = Integer.parseInt(et_nb_pieces.getText().toString());
+                if (nb_pieces < 1 || nb_pieces > 20) {
+                    LinearLayout mRootView = (LinearLayout) findViewById(R.id.ll_deposer);
+                    Snackbar.make(mRootView, "Nombre de pièces invalides !", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
                 double lat = 2.253656;
                 double lng = 2.265356;
                 int image_uri = R.drawable.logo_small;
-                String id_proprio = Compte.getId();
 
 
                 Logement l = new Logement(
