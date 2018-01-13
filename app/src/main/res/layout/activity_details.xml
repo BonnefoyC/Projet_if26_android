@@ -20,6 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/gradientbackground"
             android:minHeight="250dp"
             android:orientation="vertical"
             android:scrollIndicators="right"
@@ -27,6 +28,18 @@
             android:visibility="visible"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="0dp">
+
+            <Button
+                android:id="@+id/bt_retour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="5dp"
+                android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                android:text="Retour"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,7 +230,9 @@
                     android:padding="20dp"
                     android:text="Contactez le propriétaire"
                     android:textAlignment="center"
+                    android:textAllCaps="false"
                     android:textStyle="bold" />
+
             </LinearLayout>
 
         </LinearLayout>

@@ -35,6 +35,7 @@ public class Details extends AppCompatActivity {
     private ImageView im_logement;
 
     private Button bt_contact;
+    private Button bt_retour;
 
     //TODO retour contextuelle. finish
 
@@ -81,6 +82,14 @@ public class Details extends AppCompatActivity {
                 Intent intent = new Intent(mContext, Contact.class);
                 intent.putExtra("id_proprio",logement_courant.getId_proprio());
                 startActivity(intent);
+            }
+        });
+
+        bt_retour = (Button)findViewById(R.id.bt_retour);
+        bt_retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
