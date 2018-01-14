@@ -66,7 +66,10 @@ public class ModifierCompte extends AppCompatActivity {
                     bt_valider.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            finish();
+
+                            Intent intent = new Intent(mContext, Parametres.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
                         }
                     });
                 }

@@ -37,7 +37,7 @@ public class Authentification extends AppCompatActivity {
 
         //TODO commenter Création des logements / propriétaires.
 
-        /*
+/*
         ArrayList<Proprietaire> liste_p = Proprietaire.getInitialProprietaires();
         for (Proprietaire p : liste_p) {
             mp.addProprietaire(p);

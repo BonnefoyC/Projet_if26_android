@@ -249,7 +249,7 @@ public class ModulePersistance extends SQLiteOpenHelper {
     public Proprietaire getProprietaire(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor c = db.query(TABLE_PROPRIETAIRES, new String[] {ATTRIBUT_ID, ATTRIBUT_NOM, ATTRIBUT_EMAIL, ATTRIBUT_TEL, ATTRIBUT_PASS}, ATTRIBUT_EMAIL + " LIKE \"%" + email + "%\"",null, null, null, null);
+        Cursor c = db.query(TABLE_PROPRIETAIRES, new String[] {ATTRIBUT_ID, ATTRIBUT_NOM, ATTRIBUT_EMAIL, ATTRIBUT_TEL, ATTRIBUT_PASS}, ATTRIBUT_EMAIL + " LIKE \"%" + encryptMsg(email) + "%\"",null, null, null, null);
         return cursorToProprietaire(c);
     }
 
@@ -269,6 +269,9 @@ public class ModulePersistance extends SQLiteOpenHelper {
                     decryptMsg(c.getString(NUM_COL_EMAIL)),
                     decryptMsg(c.getString(NUM_COL_TEL)),
                     decryptMsg(c.getString(NUM_COL_PASS)));
+
+            Log.i("Proprio", p.toString());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -283,33 +286,13 @@ public class ModulePersistance extends SQLiteOpenHelper {
         String req = String.format("UPDATE %s SET %s=\"%s\", %s=\"%s\", %s=\"%s\", %s=\"%s\" WHERE %s=\"%s\";",
                 TABLE_PROPRIETAIRES,
                 ATTRIBUT_NOM,
-                p.getNom(),
+                encryptMsg(p.getNom()),
                 ATTRIBUT_EMAIL,
-                p.getEmail(),
+                encryptMsg(p.getEmail()),
                 ATTRIBUT_TEL,
-                p.getTel(),
+                encryptMsg(p.getTel()),
                 ATTRIBUT_PASS,
-                p.getPass(),
-                ATTRIBUT_ID,
-                p.getId_proprio());
-
-        db.execSQL(req);
-        db.close();
-    }
-
-    public void updateProprietairePassword(Proprietaire p) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        String req = String.format("UPDATE %s SET %s=\"%s\", %s=\"%s\", %s=\"%s\", %s=\"%s\" WHERE %s=\"%s\";",
-                TABLE_PROPRIETAIRES,
-                ATTRIBUT_NOM,
-                p.getNom(),
-                ATTRIBUT_EMAIL,
-                p.getEmail(),
-                ATTRIBUT_TEL,
-                p.getTel(),
-                ATTRIBUT_PASS,
-                p.getPass(),
+                encryptMsg(p.getPass()),
                 ATTRIBUT_ID,
                 p.getId_proprio());
 
@@ -340,28 +323,34 @@ public class ModulePersistance extends SQLiteOpenHelper {
 
     //TODO chiffrage
     public static String encryptMsg(String message)
-            throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidParameterSpecException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException
     {
-        /*
-        Cipher cipher = null;
-        cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.ENCRYPT_MODE, secret);
-        byte[] cipherText = cipher.doFinal(message.getBytes("UTF-8"));
-        return cipherText.toString();
-        */
+        byte[] tab = message.getBytes();
+
+        message = "";
+
+        for (byte b : tab) {
+            message += b + "lbl";
+        }
+
+
         return message;
     }
 
     public static String decryptMsg(String message)
-            throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidParameterSpecException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException
     {
-        /*
-        Cipher cipher = null;
-        cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.DECRYPT_MODE, secret);
-        String decryptString = new String(cipher.doFinal(cipherText.getBytes()), "UTF-8");
-        return decryptString;
-        */
+        String[] Smessage = message.split("lbl");
+
+        byte[] tab = new byte[Smessage.length];
+
+
+        for (int i = 0; i < tab.length; i++) {
+            Log.i("Decrypt", Smessage[i]);
+            byte nb = Byte.parseByte(Smessage[i].trim());
+            tab[i] = nb;
+        }
+
+        message = new String(tab);
+
         return message;
     }
 }
